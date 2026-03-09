@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
-using System.Text.Json;
 
 namespace FoodRatingApp.Spec.StepDefinitions
 {
@@ -57,20 +56,20 @@ namespace FoodRatingApp.Spec.StepDefinitions
             throw new PendingStepException();
         }
 
-        [Then("the response should contain exactly 6 rating items")]
-        public void ThenTheResponseShouldContainExactly6RatingItems()
+        [Then("the response should contain {int} rating items")]
+        public void ThenTheResponseShouldContainRatingItems(int expectedCount)
         {
             throw new PendingStepException();
         }
 
-        [Then("the sum of all rating values should equal 100")]
-        public void ThenTheSumOfAllRatingValuesShouldEqual100()
+        [Then("the sum of all rating values should equal {double}")]
+        public void ThenTheSumOfAllRatingValuesShouldEqual(double expectedSum)
         {
             throw new PendingStepException();
         }
 
-        [Then(@"the ratings should include categories ""(.*)"", ""(.*)"", ""(.*)"", ""(.*)"", ""(.*)"", ""(.*)""")]
-        public void ThenTheRatingsShouldIncludeCategories(string c1, string c2, string c3, string c4, string c5, string c6)
+        [Then("the ratings should include the following categories:")]
+        public void ThenTheRatingsShouldIncludeTheFollowingCategories(Table table)
         {
             throw new PendingStepException();
         }

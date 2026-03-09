@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
+using System.Text.Json;
 
 namespace FoodRatingApp.Spec.StepDefinitions
 {
@@ -36,7 +37,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
         public void ThenTheResponseStatusCodeShouldBe(int expectedStatusCode)
         {
             Assert.That(response, Is.Not.Null);
-            Assert.AreEqual(expectedStatusCode, (int)response!.StatusCode);
+            Assert.That((int)response!.StatusCode, Is.EqualTo(expectedStatusCode));
         }
 
         [Then("the response should contain {string}")]
@@ -44,7 +45,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
         {
             Assert.That(response, Is.Not.Null);
             var content = await response!.Content.ReadAsStringAsync();
-            Assert.IsTrue(content.Contains(expectedContent));
+            Assert.That(content, Does.Contain(expectedContent));
         }
 
         [Then("the response should contain JSON field {string}")]
@@ -52,7 +53,11 @@ namespace FoodRatingApp.Spec.StepDefinitions
         {
             Assert.That(response, Is.Not.Null);
             var content = await response!.Content.ReadAsStringAsync();
-            Assert.IsTrue(content.Contains($"\"{fieldName}\""));
+            using var doc = JsonDocument.Parse(content);
+            var root = doc.RootElement;
+            var element = root.ValueKind == JsonValueKind.Array ? root[0] : root;
+            Assert.That(element.TryGetProperty(fieldName, out _), Is.True,
+                $"Expected JSON field '{fieldName}' was not found in response");
         }
 
         private sealed class CustomWebApplicationFactory : WebApplicationFactory<Program>
