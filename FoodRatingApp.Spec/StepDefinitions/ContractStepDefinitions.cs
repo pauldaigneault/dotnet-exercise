@@ -1,5 +1,6 @@
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
+using FoodRatingApp.Spec;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,34 +14,42 @@ namespace FoodRatingApp.Spec.StepDefinitions
     [Scope(Tag = "contract")]
     public class ContractStepDefinitions
     {
-        private static readonly WebApplicationFactory<Program> Factory = new ContractWebApplicationFactory();
+        private static readonly WebApplicationFactory<Program> Factory =
+            new ContractWebApplicationFactory();
         private static readonly HttpClient _client = Factory.CreateClient();
         private static List<FsaAuthority> _stubbedAuthorities = [];
-        private HttpResponseMessage? response;
-        private string? apiEndpoint;
+
+        private readonly ApiScenarioContext _context;
+
+        public ContractStepDefinitions(ApiScenarioContext context)
+        {
+            _context = context;
+        }
 
         [Given("the following authorities exist:")]
         public void GivenTheFollowingAuthoritiesExist(Table table)
         {
-            _stubbedAuthorities = table.Rows.Select(row => new FsaAuthority
-            {
-                LocalAuthorityId = int.Parse(row["id"]),
-                Name = row["name"]
-            }).ToList();
+            _stubbedAuthorities = table
+                .Rows.Select(row => new FsaAuthority
+                {
+                    LocalAuthorityId = int.Parse(row["id"]),
+                    Name = row["name"],
+                })
+                .ToList();
         }
 
         [Given("the API endpoint is {string}")]
         public void GivenTheAPIEndpointIs(string endpoint)
         {
-            apiEndpoint = endpoint;
+            _context.ApiEndpoint = endpoint;
         }
 
         [When("the API is called")]
         public async Task WhenTheAPIIsCalled()
         {
-            Assert.That(apiEndpoint, Is.Not.Null.And.Not.Empty);
-            var uri = new Uri(apiEndpoint!, UriKind.Absolute);
-            response = await _client.GetAsync(uri.PathAndQuery);
+            Assert.That(_context.ApiEndpoint, Is.Not.Null.And.Not.Empty);
+            var uri = new Uri(_context.ApiEndpoint!, UriKind.Absolute);
+            _context.Response = await _client.GetAsync(uri.PathAndQuery);
         }
 
         [Then(@"the response should contain at least (\d+) authorit(?:y|ies)")]
@@ -101,10 +110,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
         {
             public Task<FsaAuthorityList> GetAuthorities()
             {
-                return Task.FromResult(new FsaAuthorityList
-                {
-                    Authorities = _stubbedAuthorities
-                });
+                return Task.FromResult(new FsaAuthorityList { Authorities = _stubbedAuthorities });
             }
         }
     }

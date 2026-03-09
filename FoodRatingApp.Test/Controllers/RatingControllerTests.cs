@@ -19,8 +19,8 @@ public class RatingControllerTests
             Authorities = new List<FsaAuthority>
             {
                 new FsaAuthority { Name = "authority1", LocalAuthorityId = 1 },
-                new FsaAuthority { Name = "authority2", LocalAuthorityId = 2 }
-            }
+                new FsaAuthority { Name = "authority2", LocalAuthorityId = 2 },
+            },
         };
 
         var fsaClient = new Mock<IFsaClient>();

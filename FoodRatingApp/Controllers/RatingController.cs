@@ -19,7 +19,11 @@ public class RatingController(IFsaClient fsaClient) : Controller
     public async Task<JsonResult> GetAsync()
     {
         var fsaAuthorities = await _fsaClient.GetAuthorities();
-        var authorityList = fsaAuthorities.Authorities.Select(authority => new Authority { Id = authority.LocalAuthorityId, Name = authority.Name });
+        var authorityList = fsaAuthorities.Authorities.Select(authority => new Authority
+        {
+            Id = authority.LocalAuthorityId,
+            Name = authority.Name,
+        });
         return Json(authorityList);
     }
 
