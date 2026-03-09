@@ -22,8 +22,8 @@ Scenario: Authority list response includes an id and name for each authority
   Given the API endpoint is "https://localhost:5001/api"
   When the API is called
   Then the response HTTP status code should be 200 OK
-  And the response should contain JSON field "id"
-  And the response should contain JSON field "name"
+  And the response body should contain JSON field "id"
+  And the response body should contain JSON field "name"
 
 @integration
 Scenario: Request with a non-integer authority id returns 400 Bad Request

@@ -55,8 +55,8 @@ namespace FoodRatingApp.Spec.StepDefinitions
             Assert.That(content, Does.Contain(expectedContent));
         }
 
-        [Then("the response should contain JSON field {string}")]
-        public async Task ThenTheResponseShouldContainJsonField(string fieldName)
+        [Then("the response body should contain JSON field {string}")]
+        public async Task ThenTheResponseBodyShouldContainJsonField(string fieldName)
         {
             Assert.That(_context.Response, Is.Not.Null);
             var content = await _context.Response!.Content.ReadAsStringAsync();
