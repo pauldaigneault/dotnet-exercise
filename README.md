@@ -103,3 +103,12 @@ dotnet test FoodRatingApp.Spec/FoodRatingApp.Spec.csproj --filter "FullyQualifie
 dotnet test FoodRatingApp.Spec/FoodRatingApp.Spec.csproj --filter "FullyQualifiedName~AuthorityList"
 dotnet test FoodRatingApp.Spec/FoodRatingApp.Spec.csproj --filter "FullyQualifiedName~AuthorityRatings"
 ```
+
+## References
+
+| Library | Description | Documentation |
+|---------|-------------|---------------|
+| [Reqnroll](https://reqnroll.net) | BDD test framework for .NET (successor to SpecFlow) | [docs.reqnroll.net](https://docs.reqnroll.net) |
+| [Reqnroll + NUnit](https://docs.reqnroll.net/latest/installation/setup-reqnroll-project.html) | Setting up Reqnroll with NUnit | [Installation guide](https://docs.reqnroll.net/latest/installation/setup-reqnroll-project.html) |
+| [NUnit](https://nunit.org) | Unit testing framework for .NET | [docs.nunit.org](https://docs.nunit.org) |
+| [Gherkin syntax](https://cucumber.io/docs/gherkin/reference/) | Feature file syntax reference | [cucumber.io/docs/gherkin](https://cucumber.io/docs/gherkin/reference/) |
