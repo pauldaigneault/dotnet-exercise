@@ -13,8 +13,8 @@ Scenario Outline: Get authority ratings for authority id
     And the response should contain JSON field "value"
 
 Examples:
-    | endpoint                     | star_rating | value |
-    | https://localhost:5001/api/1 | 5-star      | 22.41 |
+    | endpoint                       | star_rating | value |
+    | https://localhost:5001/api/1   | 5-star      | 22.41 |
     | https://localhost:5001/api/999 | 5-star      | 50    |
 
 @integration
