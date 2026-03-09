@@ -277,7 +277,3 @@ __pycache__/
 ### Additional ###
 # VSCode directory
 .vscode/
-
-# Claude Code — maintainer tooling, do not expose to candidates
-CLAUDE.md
-.claude/commands/
