@@ -20,13 +20,13 @@ dotnet-exercise/
 │   ├── Controllers/
 │   │   └── RatingController.cs              — GET /api and GET /api/{id}
 │   ├── Services/
-│   │   ├── IFSAClient.cs                    — FSA client interface
-│   │   └── FSAClient.cs                     — HTTP client for the FSA API
+│   │   ├── IFsaClient.cs                    — FSA client interface
+│   │   └── FsaClient.cs                     — HTTP client for the FSA API
 │   ├── Model/
 │   │   ├── Authority.cs
 │   │   ├── AuthorityRatingItem.cs
-│   │   ├── FSAAuthority.cs
-│   │   └── FSAAuthorityList.cs
+│   │   ├── FsaAuthority.cs
+│   │   └── FsaAuthorityList.cs
 │   ├── wwwroot/                             — Static frontend (HTML + CSS)
 │   ├── Program.cs
 │   └── FoodRatingApp.csproj
@@ -44,6 +44,7 @@ dotnet-exercise/
     ├── StepDefinitions/
     │   ├── FoodRatings.cs                   — Example step definitions
     │   └── ContractStepDefinitions.cs       — Skeleton steps to implement
+    ├── ApiScenarioContext.cs                — Shared scenario state (context injection)
     └── FoodRatingApp.Spec.csproj
 ```
 
