@@ -1,5 +1,4 @@
 Feature: Authority ratings response contract
-
   In order to display accurate food hygiene rating distributions for a given authority
   As a client of the Food Ratings API
   I want the GET /api/{authorityId} endpoint to return a complete set of rating categories

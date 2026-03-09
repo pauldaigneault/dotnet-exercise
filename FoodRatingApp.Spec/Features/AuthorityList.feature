@@ -1,5 +1,4 @@
 Feature: Authority list response contract
-
   In order to present users with a list of local authorities
   As a client of the Food Ratings API
   I want the GET /api endpoint to return a valid, non-empty collection of authorities

@@ -1,5 +1,4 @@
 Feature: Food ratings API integration scenarios
-
   In order to surface food hygiene ratings to consumers
   As a client of the Food Ratings API
   I want the API to return well-structured rating and authority data
