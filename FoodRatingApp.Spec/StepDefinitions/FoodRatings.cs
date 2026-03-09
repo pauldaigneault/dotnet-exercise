@@ -33,8 +33,8 @@ namespace FoodRatingApp.Spec.StepDefinitions
             _response = await _client.GetAsync(uri.PathAndQuery);
         }
 
-        [Then("the response status code should be {int}")]
-        public void ThenTheResponseStatusCodeShouldBe(int expectedStatusCode)
+        [Then(@"the response HTTP status code should be (\d+) [A-Za-z ]+")]
+        public void ThenTheResponseHTTPStatusCodeShouldBe(int expectedStatusCode)
         {
             Assert.That(_response, Is.Not.Null);
             Assert.That((int)_response!.StatusCode, Is.EqualTo(expectedStatusCode));
