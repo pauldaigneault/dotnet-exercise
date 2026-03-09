@@ -1,11 +1,11 @@
-using Reqnroll;
-using NUnit.Framework;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using NUnit.Framework;
+using Reqnroll;
 
 namespace FoodRatingApp.Spec.StepDefinitions
 {
@@ -14,7 +14,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
     public class ContractStepDefinitions
     {
         private static readonly WebApplicationFactory<Program> Factory = new ContractWebApplicationFactory();
-        private static readonly HttpClient client = Factory.CreateClient();
+        private static readonly HttpClient _client = Factory.CreateClient();
         private static List<FsaAuthority> _stubbedAuthorities = [];
         private HttpResponseMessage? response;
         private string? apiEndpoint;
@@ -40,7 +40,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
         {
             Assert.That(apiEndpoint, Is.Not.Null.And.Not.Empty);
             var uri = new Uri(apiEndpoint!, UriKind.Absolute);
-            response = await client.GetAsync(uri.PathAndQuery);
+            response = await _client.GetAsync(uri.PathAndQuery);
         }
 
         [Then(@"the response should contain at least (\d+) authorit(?:y|ies)")]

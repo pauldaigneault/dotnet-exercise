@@ -1,6 +1,6 @@
-﻿namespace FoodRatingApp.Services;
-
 using FoodRatingApp.Model;
+
+namespace FoodRatingApp.Services;
 
 public interface IFsaClient
 {

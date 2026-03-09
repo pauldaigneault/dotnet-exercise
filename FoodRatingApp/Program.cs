@@ -1,4 +1,4 @@
-﻿using FoodRatingApp.Services;
+using FoodRatingApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +21,6 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseDefaultFiles();
 app.UseStaticFiles();
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();

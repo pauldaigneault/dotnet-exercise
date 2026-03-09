@@ -1,13 +1,13 @@
-﻿namespace FoodRatingApp.Controllers;
-
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
 
-[Route("api/")]
+namespace FoodRatingApp.Controllers;
+
+[Route("api")]
 [ApiController]
-public class RatingController(IFsaClient fSaClient) : Controller
+public class RatingController(IFsaClient fsaClient) : Controller
 {
-    private readonly IFsaClient _fSaClient = fSaClient;
+    private readonly IFsaClient _fsaClient = fsaClient;
 
     /// <summary>
     /// Produces a list of authorities, for the select dropdown
@@ -18,7 +18,7 @@ public class RatingController(IFsaClient fSaClient) : Controller
     [HttpGet]
     public async Task<JsonResult> GetAsync()
     {
-        var fsaAuthorities = await _fSaClient.GetAuthorities();
+        var fsaAuthorities = await _fsaClient.GetAuthorities();
         var authorityList = fsaAuthorities.Authorities.Select(authority => new Authority { Id = authority.LocalAuthorityId, Name = authority.Name });
         return Json(authorityList);
     }

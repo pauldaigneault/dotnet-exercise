@@ -1,12 +1,12 @@
-using Reqnroll;
-using NUnit.Framework;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Text.Json;
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
-using System.Text.Json;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using NUnit.Framework;
+using Reqnroll;
 
 namespace FoodRatingApp.Spec.StepDefinitions
 {
@@ -15,44 +15,44 @@ namespace FoodRatingApp.Spec.StepDefinitions
     public class FoodRatingsApiStepDefinitions
     {
         private static readonly WebApplicationFactory<Program> Factory = new CustomWebApplicationFactory();
-        private static readonly HttpClient client = Factory.CreateClient();
-        private HttpResponseMessage? response;
-        private string? apiEndpoint;
+        private static readonly HttpClient _client = Factory.CreateClient();
+        private HttpResponseMessage? _response;
+        private string? _apiEndpoint;
 
         [Given("the API endpoint is {string}")]
         public void GivenTheAPIEndpointIs(string endpoint)
         {
-            apiEndpoint = endpoint;
+            _apiEndpoint = endpoint;
         }
 
         [When("the API is called")]
         public async Task WhenTheAPIIsCalled()
         {
-            Assert.That(apiEndpoint, Is.Not.Null.And.Not.Empty);
-            var uri = new Uri(apiEndpoint!, UriKind.Absolute);
-            response = await client.GetAsync(uri.PathAndQuery);
+            Assert.That(_apiEndpoint, Is.Not.Null.And.Not.Empty);
+            var uri = new Uri(_apiEndpoint!, UriKind.Absolute);
+            _response = await _client.GetAsync(uri.PathAndQuery);
         }
 
         [Then("the response status code should be {int}")]
         public void ThenTheResponseStatusCodeShouldBe(int expectedStatusCode)
         {
-            Assert.That(response, Is.Not.Null);
-            Assert.That((int)response!.StatusCode, Is.EqualTo(expectedStatusCode));
+            Assert.That(_response, Is.Not.Null);
+            Assert.That((int)_response!.StatusCode, Is.EqualTo(expectedStatusCode));
         }
 
         [Then("the response should contain {string}")]
         public async Task ThenTheResponseShouldContain(string expectedContent)
         {
-            Assert.That(response, Is.Not.Null);
-            var content = await response!.Content.ReadAsStringAsync();
+            Assert.That(_response, Is.Not.Null);
+            var content = await _response!.Content.ReadAsStringAsync();
             Assert.That(content, Does.Contain(expectedContent));
         }
 
         [Then("the response should contain JSON field {string}")]
         public async Task ThenTheResponseShouldContainJsonField(string fieldName)
         {
-            Assert.That(response, Is.Not.Null);
-            var content = await response!.Content.ReadAsStringAsync();
+            Assert.That(_response, Is.Not.Null);
+            var content = await _response!.Content.ReadAsStringAsync();
             using var doc = JsonDocument.Parse(content);
             var root = doc.RootElement;
             var element = root.ValueKind == JsonValueKind.Array ? root[0] : root;

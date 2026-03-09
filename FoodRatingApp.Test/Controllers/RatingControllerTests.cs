@@ -1,37 +1,34 @@
-﻿namespace FoodRatingApp.Test.Controllers;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using FoodRatingApp.Controllers;
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
 using Moq;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-class RatingControllerTests
+namespace FoodRatingApp.Test.Controllers;
+
+public class RatingControllerTests
 {
     [Test]
     public async Task GetAsync_ReturnsAllAuthorities()
     {
-        // Arrange
         var authorityList = new FsaAuthorityList
         {
             Authorities = new List<FsaAuthority>
-                {
-                    new FsaAuthority { Name = "authority1", LocalAuthorityId = 1 },
-                    new FsaAuthority { Name = "authority2", LocalAuthorityId = 2 }
-                }
+            {
+                new FsaAuthority { Name = "authority1", LocalAuthorityId = 1 },
+                new FsaAuthority { Name = "authority2", LocalAuthorityId = 2 }
+            }
         };
 
         var fsaClient = new Mock<IFsaClient>();
         fsaClient.Setup(c => c.GetAuthorities()).ReturnsAsync(authorityList);
         var controller = new RatingController(fsaClient.Object);
 
-        // Act
         var jsonResult = await controller.GetAsync();
 
-        // Assert
         Assert.That(jsonResult.Value, Is.InstanceOf<IEnumerable<Authority>>());
         var authorities = ((IEnumerable<Authority>)jsonResult.Value).ToArray();
         Assert.That(authorities.Length, Is.EqualTo(2));

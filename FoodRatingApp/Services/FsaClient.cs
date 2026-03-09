@@ -1,7 +1,7 @@
-﻿namespace FoodRatingApp.Services;
-
-using FoodRatingApp.Model;
 using System.Text.Json;
+using FoodRatingApp.Model;
+
+namespace FoodRatingApp.Services;
 
 public class FsaClient : IFsaClient
 {

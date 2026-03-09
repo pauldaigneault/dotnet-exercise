@@ -8,6 +8,6 @@ public class FsaAuthority
 
     public override string ToString()
     {
-        return $"FSAAuthority[id={LocalAuthorityId}, name='{Name}']";
+        return $"FsaAuthority[id={LocalAuthorityId}, name='{Name}']";
     }
 }
