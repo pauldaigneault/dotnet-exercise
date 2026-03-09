@@ -15,8 +15,19 @@ namespace FoodRatingApp.Spec.StepDefinitions
     {
         private static readonly WebApplicationFactory<Program> Factory = new ContractWebApplicationFactory();
         private static readonly HttpClient client = Factory.CreateClient();
+        private static List<FsaAuthority> _stubbedAuthorities = [];
         private HttpResponseMessage? response;
         private string? apiEndpoint;
+
+        [Given("the following authorities exist:")]
+        public void GivenTheFollowingAuthoritiesExist(Table table)
+        {
+            _stubbedAuthorities = table.Rows.Select(row => new FsaAuthority
+            {
+                LocalAuthorityId = int.Parse(row["id"]),
+                Name = row["name"]
+            }).ToList();
+        }
 
         [Given("the API endpoint is {string}")]
         public void GivenTheAPIEndpointIs(string endpoint)
@@ -32,8 +43,8 @@ namespace FoodRatingApp.Spec.StepDefinitions
             response = await client.GetAsync(uri.PathAndQuery);
         }
 
-        [Then("the response should contain at least 1 authority")]
-        public void ThenTheResponseShouldContainAtLeast1Authority()
+        [Then(@"the response should contain at least (\d+) authorit(?:y|ies)")]
+        public void ThenTheResponseShouldContainAtLeastAuthorities(int minimumCount)
         {
             throw new PendingStepException();
         }
@@ -92,11 +103,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
             {
                 return Task.FromResult(new FsaAuthorityList
                 {
-                    Authorities =
-                    [
-                        new FsaAuthority { LocalAuthorityId = 1, Name = "Authority 1" },
-                        new FsaAuthority { LocalAuthorityId = 2, Name = "Authority 2" }
-                    ]
+                    Authorities = _stubbedAuthorities
                 });
             }
         }
