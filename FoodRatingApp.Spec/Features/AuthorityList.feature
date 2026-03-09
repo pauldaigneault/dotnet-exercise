@@ -1,6 +1,9 @@
 Feature: Authority list response contract
 
-Validate the structure and content of the /api authority list endpoint.
+  In order to present users with a list of local authorities
+  As a client of the Food Ratings API
+  I want the GET /api endpoint to return a valid, non-empty collection of authorities
+  So that each authority can be identified by a unique positive integer id and a non-empty name
 
 @contract
 Scenario: Authority list returns a non-empty collection

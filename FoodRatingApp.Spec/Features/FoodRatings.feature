@@ -1,6 +1,9 @@
 Feature: Food ratings API integration scenarios
 
-Validating the integration behavior of the local Food Ratings API.
+  In order to surface food hygiene ratings to consumers
+  As a client of the Food Ratings API
+  I want the API to return well-structured rating and authority data
+  So that downstream systems can reliably consume and display it
 
 @integration
 Scenario Outline: Get authority ratings for authority id

@@ -1,6 +1,9 @@
 Feature: Authority ratings response contract
 
-Validate the structure and content of the /api/{authorityId} ratings endpoint.
+  In order to display accurate food hygiene rating distributions for a given authority
+  As a client of the Food Ratings API
+  I want the GET /api/{authorityId} endpoint to return a complete set of rating categories
+  So that the values are structurally valid and always sum to 100 percent
 
 @contract
 Scenario Outline: Ratings response contains exactly 6 categories
