@@ -14,38 +14,12 @@ A .NET 8 Web API that wraps the UK Food Standards Agency (FSA) public food hygie
 
 ```
 dotnet-exercise/
-├── FoodRatingApp.sln                         — Solution file
-│
-├── FoodRatingApp/                            — Main Web API
-│   ├── Controllers/
-│   │   └── RatingController.cs              — GET /api and GET /api/{id}
-│   ├── Services/
-│   │   ├── IFsaClient.cs                    — FSA client interface
-│   │   └── FsaClient.cs                     — HTTP client for the FSA API
-│   ├── Model/
-│   │   ├── Authority.cs
-│   │   ├── AuthorityRatingItem.cs
-│   │   ├── FsaAuthority.cs
-│   │   └── FsaAuthorityList.cs
-│   ├── wwwroot/                             — Static frontend (HTML + CSS)
-│   ├── Program.cs
-│   └── FoodRatingApp.csproj
-│
-├── FoodRatingApp.Test/                       — NUnit unit tests
-│   ├── Controllers/
-│   │   └── RatingControllerTests.cs
-│   └── FoodRatingApp.Test.csproj
-│
-└── FoodRatingApp.Spec/                       — Reqnroll BDD specs
-    ├── Features/
-    │   ├── FoodRatings.feature              — Passing example
-    │   ├── AuthorityList.feature            — Candidate task
-    │   └── AuthorityRatings.feature         — Candidate task
-    ├── StepDefinitions/
-    │   ├── FoodRatings.cs                   — Example step definitions
-    │   └── ContractStepDefinitions.cs       — Skeleton steps to implement
-    ├── ApiScenarioContext.cs                — Shared scenario state (context injection)
-    └── FoodRatingApp.Spec.csproj
+├── FoodRatingApp/          — Main Web API (Controllers, Services, Model)
+├── FoodRatingApp.Test/     — NUnit unit tests
+├── FoodRatingApp.Spec/     — Reqnroll BDD specs
+│   ├── Features/           — Feature files (example + candidate tasks)
+│   └── StepDefinitions/    — Step definitions (example + skeleton to implement)
+└── FoodRatingApp.sln
 ```
 
 ## Getting Started
