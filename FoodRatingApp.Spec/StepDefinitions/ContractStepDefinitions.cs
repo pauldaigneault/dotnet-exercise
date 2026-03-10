@@ -58,7 +58,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
             throw new PendingStepException();
         }
 
-        [Then("each authority has a valid numeric identifier")]
+        [Then("each authority has a valid identifier")]
         public void ThenEachAuthorityHasAValidNumericIdentifier()
         {
             throw new PendingStepException();

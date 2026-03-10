@@ -17,9 +17,9 @@ Feature: Authority list response contract
     Then the response should contain at least 1 authority
 
   @contract
-  Scenario: Each authority has a valid numeric identifier
+  Scenario: Each authority has a valid identifier
     When the API is called
-    Then each authority has a valid numeric identifier
+    Then each authority has a valid identifier
 
   @contract
   Scenario: Each authority has a displayable name
