@@ -58,14 +58,14 @@ namespace FoodRatingApp.Spec.StepDefinitions
             throw new PendingStepException();
         }
 
-        [Then("every authority id should be a positive integer")]
-        public void ThenEveryAuthorityIdShouldBeAPositiveInteger()
+        [Then("each authority has a valid numeric identifier")]
+        public void ThenEachAuthorityHasAValidNumericIdentifier()
         {
             throw new PendingStepException();
         }
 
-        [Then("every authority name should be a non-empty string")]
-        public void ThenEveryAuthorityNameShouldBeANonEmptyString()
+        [Then("each authority has a displayable name")]
+        public void ThenEachAuthorityHasADisplayableName()
         {
             throw new PendingStepException();
         }
