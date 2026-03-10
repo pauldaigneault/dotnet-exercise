@@ -1,11 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FoodRatingApp.Controllers;
 using FoodRatingApp.Model;
 using FoodRatingApp.Services;
-using Moq;
-using NUnit.Framework;
 
 namespace FoodRatingApp.Test.Controllers;
 
