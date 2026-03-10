@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using NUnit.Framework;
 using Reqnroll;
 
 namespace FoodRatingApp.Spec.StepDefinitions
@@ -47,7 +46,7 @@ namespace FoodRatingApp.Spec.StepDefinitions
         [When("the API is called")]
         public async Task WhenTheAPIIsCalled()
         {
-            Assert.That(_context.ApiEndpoint, Is.Not.Null.And.Not.Empty);
+            _context.ApiEndpoint.Should().NotBeNullOrEmpty();
             var uri = new Uri(_context.ApiEndpoint!, UriKind.Absolute);
             _context.Response = await _client.GetAsync(uri.PathAndQuery);
         }

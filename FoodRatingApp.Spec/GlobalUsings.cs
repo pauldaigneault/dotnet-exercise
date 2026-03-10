@@ -1,2 +1,3 @@
-global using NUnit;
+global using Xunit;
+global using AwesomeAssertions;
 global using Reqnroll;
