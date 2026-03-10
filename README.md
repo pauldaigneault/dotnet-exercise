@@ -15,7 +15,7 @@ A .NET 8 Web API that wraps the UK Food Standards Agency (FSA) public food hygie
 ```
 dotnet-exercise/
 ├── FoodRatingApp/          — Main Web API (Controllers, Services, Model)
-├── FoodRatingApp.Test/     — NUnit unit tests
+├── FoodRatingApp.Test/     — xUnit unit tests
 ├── FoodRatingApp.Spec/     — Reqnroll BDD specs
 │   ├── Features/           — Feature files (example + candidate tasks)
 │   └── StepDefinitions/    — Step definitions (example + skeleton to implement)
@@ -83,5 +83,6 @@ dotnet test FoodRatingApp.Spec/FoodRatingApp.Spec.csproj --filter "FullyQualifie
 | Library | Description | Documentation |
 |---------|-------------|---------------|
 | [Reqnroll](https://reqnroll.net) | BDD test framework for .NET (successor to SpecFlow) | [docs.reqnroll.net](https://docs.reqnroll.net) |
-| [Reqnroll + NUnit](https://docs.reqnroll.net/latest/installation/setup-reqnroll-project.html) | Setting up Reqnroll with NUnit | [Installation guide](https://docs.reqnroll.net/latest/installation/setup-reqnroll-project.html) |
-| [NUnit](https://nunit.org) | Unit testing framework for .NET | [docs.nunit.org](https://docs.nunit.org) |
+| [Reqnroll + xUnit](https://docs.reqnroll.net/latest/installation/setup-reqnroll-project.html) | Setting up Reqnroll with xUnit | [Installation guide](https://docs.reqnroll.net/latest/installation/setup-reqnroll-project.html) |
+| [xUnit](https://xunit.net) | Unit testing framework for .NET | [xunit.net/docs](https://xunit.net/docs/getting-started/netcore/cmdline) |
+| [AwesomeAssertions](https://github.com/AwesomeAssertions/AwesomeAssertions) | Fluent assertion library for .NET | [awesomeassertions.com](https://awesomeassertions.com) |
