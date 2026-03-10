@@ -7,7 +7,7 @@ A .NET 8 Web API that wraps the UK Food Standards Agency (FSA) public food hygie
 ## Prerequisites
 
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
-- Internet access (the API calls the live FSA service)
+- Internet access (required to run the API against the live FSA service — not required for running tests, which use stub data)
 - A suitable development environment (e.g. VS Code, JetBrains Rider, Visual Studio)
 
 ## Project Structure
