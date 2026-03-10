@@ -6,7 +6,7 @@ namespace FoodRatingApp.Test.Controllers;
 
 public class RatingControllerTests
 {
-    [Test]
+    [Fact]
     public async Task GetAsync_ReturnsAllAuthorities()
     {
         var authorityList = new FsaAuthorityList
@@ -18,18 +18,18 @@ public class RatingControllerTests
             },
         };
 
-        var fsaClient = new Mock<IFsaClient>();
-        fsaClient.Setup(c => c.GetAuthorities()).ReturnsAsync(authorityList);
-        var controller = new RatingController(fsaClient.Object);
+        var fsaClient = Substitute.For<IFsaClient>();
+        fsaClient.GetAuthorities().Returns(Task.FromResult<FsaAuthorityList>(authorityList));
+        var controller = new RatingController(fsaClient);
 
         var jsonResult = await controller.GetAsync();
 
-        Assert.That(jsonResult.Value, Is.InstanceOf<IEnumerable<Authority>>());
+        jsonResult.Value.Should().BeAssignableTo<IEnumerable<Authority>>();
         var authorities = ((IEnumerable<Authority>)jsonResult.Value).ToArray();
-        Assert.That(authorities.Length, Is.EqualTo(2));
-        Assert.That(authorities[0].Name, Is.EqualTo("authority1"));
-        Assert.That(authorities[0].Id, Is.EqualTo(1));
-        Assert.That(authorities[1].Name, Is.EqualTo("authority2"));
-        Assert.That(authorities[1].Id, Is.EqualTo(2));
+        authorities.Length.Should().Be(2);
+        authorities[0].Name.Should().Be("authority1");
+        authorities[0].Id.Should().Be(1);
+        authorities[1].Name.Should().Be("authority2");
+        authorities[1].Id.Should().Be(2);
     }
 }

@@ -1,2 +1,3 @@
-global using Moq;
-global using NUnit.Framework;
+global using Xunit;
+global using NSubstitute;
+global using AwesomeAssertions;
