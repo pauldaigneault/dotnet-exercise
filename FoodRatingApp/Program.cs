@@ -1,4 +1,4 @@
-﻿using NGE.TechTest.Services;
+using FoodRatingApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +21,8 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseDefaultFiles();
 app.UseStaticFiles();
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -1,4 +1,4 @@
-namespace NGE.TechTest.Model;
+namespace FoodRatingApp.Model;
 
 /// <summary>
 /// A single rating item.

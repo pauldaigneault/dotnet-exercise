@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "NGE.TechTest": {
+    "FoodRatingApp": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "/",

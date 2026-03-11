@@ -1,6 +1,6 @@
-﻿namespace NGE.TechTest.Services;
+using FoodRatingApp.Model;
 
-using NGE.TechTest.Model;
+namespace FoodRatingApp.Services;
 
 public interface IFsaClient
 {
